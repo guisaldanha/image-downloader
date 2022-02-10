@@ -1,0 +1,23 @@
+{
+	"name": "guisaldanha/image-downloader",
+	"description": "PHP class to download images from a given URL. Scrapes the image from the HTML source.",
+	"version": "1.0.0",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+		{
+			"name": "Guilherme Saldanha",
+			"email": "guisaldanha@gmail.com",
+			"homepage": "https://www.guisaldanha.com",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": ">=7.4"
+	},
+	"autoload": {
+		"psr-4": {
+			"GuiSaldanha\\ImageDownloader\\": "src/"
+		}
+	}
+}
