@@ -44,14 +44,14 @@ class ImageDownloader
 	 *
 	 * @var string
 	 */
-	private string $logUrls = 'urls-acessadas.log';
+	private string $logUrls = __DIR__.'/urls-acessadas.log';
 
 	/**
 	 * Arquivo de log onde serão listadas as imagens baixadas
 	 *
 	 * @var string
 	 */
-	private string $logImages = 'imagens-baixadas.log';
+	private string $logImages = __DIR__.'/imagens-baixadas.log';
 
 	/**
 	 * Construtor da classe ImageDownloader que recebe a url onde estão as imagens e o caminho onde serão salvas.
@@ -262,16 +262,18 @@ class ImageDownloader
 	 */
 	public function inLog($file, $txt)
 	{
-		$log = fopen($file, 'r');
 		$retorno = false;
-		while (!feof($log)) {
-			$line = fgets($log);
-			if (strpos($line, $txt) !== false) {
-				$retorno = true;
-				break;
+		if (is_file($file)) {
+			$log = fopen($file, 'r');
+			while (!feof($log)) {
+				$line = fgets($log);
+				if (strpos($line, $txt) !== false) {
+					$retorno = true;
+					break;
+				}
 			}
+			fclose($log);
 		}
-		fclose($log);
 		return $retorno;
 	}
 }
